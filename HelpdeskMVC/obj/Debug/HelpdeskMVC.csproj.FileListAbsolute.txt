@@ -36,7 +36,6 @@ D:\shivigarg\HelpdeskMVC\HelpdeskMVC\bin\Microsoft.AI.DependencyCollector.xml
 D:\shivigarg\HelpdeskMVC\HelpdeskMVC\bin\Microsoft.AI.ServerTelemetryChannel.xml
 D:\shivigarg\HelpdeskMVC\HelpdeskMVC\bin\Microsoft.AI.WindowsServer.xml
 D:\shivigarg\HelpdeskMVC\HelpdeskMVC\bin\Microsoft.AI.Web.xml
-D:\shivigarg\HelpdeskMVC\HelpdeskMVC\obj\Debug\HelpdeskMVC.csprojResolveAssemblyReference.cache
 D:\shivigarg\HelpdeskMVC\HelpdeskMVC\obj\Debug\HelpdeskMVC.csproj.CoreCompileInputs.cache
 D:\shivigarg\HelpdeskMVC\HelpdeskMVC\obj\Debug\HelpdeskMVC.dll
 D:\shivigarg\HelpdeskMVC\HelpdeskMVC\obj\Debug\HelpdeskMVC.pdb

@@ -11,25 +11,29 @@ namespace HelpdeskMVC.Models
     [Table("tblUsers")]
     public class UserDetails
     {
-        public string Id { get; set; }
+      
+        public int Id { get; set; }
 
         public string Prefix { get; set; }
 
+        
         [Display(Name = "First Name")]
         [Required]
-        [RegularExpression(@"^[a-zA-Z]$", ErrorMessage = "Space and numbers are not allowed.")]
+        [RegularExpression(@"^[a-zA-Z]{2,50}$", ErrorMessage = "Only Characters are allowed")]
         public string FirstName { get; set; }
 
-        [DataType(DataType.Text)]
         [Display(Name = "Last Name")]
+        [Required]
+        [RegularExpression(@"^[a-zA-Z]{2,50}$", ErrorMessage = "Only Characters are allowed")]
         public string LastName { get; set; }
 
         public string Address { get; set; }
 
         [Display(Name = "Select District")]
+   
+        public Nullable<int> DistrictId { get; set; }
         [NotMapped]
-        public string SelectedDistrict { get; set; }
-        public IEnumerable<SelectListItem> District { get; set; }
+        public List<District> DistrictCollection { get; set; }
 
         [RegularExpression(@"^(\d{10})$",ErrorMessage ="Please Enter valid mobile number")]
         public string Mobile { get; set; }
@@ -50,7 +54,7 @@ namespace HelpdeskMVC.Models
         public string ConfirmPassword { get; set; }
 
         [Display(Name = "Date Of Birth")]
-        public DateTime DateOfBirth { get; set; }
+        public string DateOfBirth { get; set; }
 
         public string Gender { get; set; }
     }

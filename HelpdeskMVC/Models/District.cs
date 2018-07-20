@@ -9,7 +9,8 @@ namespace HelpdeskMVC.Models
     [Table("DistrictMaster")]
     public class District
     {
-        public int Id { get; set; }
+        public int DistrictId { get; set; }
         public string DistrictNames { get; set; }
+       
     }
 }

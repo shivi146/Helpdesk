@@ -11,12 +11,8 @@ namespace HelpdeskMVC.Models
     [Table("tblUsers")]
     public class UserDetails
     {
-      
         public int Id { get; set; }
 
-        public string Prefix { get; set; }
-
-        
         [Display(Name = "First Name")]
         [Required]
         [RegularExpression(@"^[a-zA-Z]{2,50}$", ErrorMessage = "Only Characters are allowed")]
@@ -27,15 +23,13 @@ namespace HelpdeskMVC.Models
         [RegularExpression(@"^[a-zA-Z]{2,50}$", ErrorMessage = "Only Characters are allowed")]
         public string LastName { get; set; }
 
-        public string Address { get; set; }
-
         [Display(Name = "Select District")]
-   
+
         public Nullable<int> DistrictId { get; set; }
         [NotMapped]
         public List<District> DistrictCollection { get; set; }
 
-        [RegularExpression(@"^(\d{10})$",ErrorMessage ="Please Enter valid mobile number")]
+        [RegularExpression(@"^(\d{10})$", ErrorMessage = "Please Enter valid mobile number")]
         public string Mobile { get; set; }
 
         [Required]
@@ -50,12 +44,11 @@ namespace HelpdeskMVC.Models
         [DataType(DataType.Password)]
         [System.ComponentModel.DataAnnotations.Compare("Password")]
         [Display(Name = "Confirm Password")]
-        [Required]
+
+        [NotMapped]
         public string ConfirmPassword { get; set; }
 
         [Display(Name = "Date Of Birth")]
         public string DateOfBirth { get; set; }
-
-        public string Gender { get; set; }
     }
 }

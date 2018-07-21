@@ -43,3 +43,6 @@ D:\shivigarg\HelpdeskMVC\HelpdeskMVC\bin\EntityFramework.dll
 D:\shivigarg\HelpdeskMVC\HelpdeskMVC\bin\EntityFramework.SqlServer.dll
 D:\shivigarg\HelpdeskMVC\HelpdeskMVC\bin\EntityFramework.xml
 D:\shivigarg\HelpdeskMVC\HelpdeskMVC\bin\EntityFramework.SqlServer.xml
+D:\shivigarg\HelpdeskMVC\HelpdeskMVC\obj\Debug\HelpdeskMVC.csprojResolveAssemblyReference.cache
+D:\shivigarg\HelpdeskMVC\HelpdeskMVC\bin\log4net.dll
+D:\shivigarg\HelpdeskMVC\HelpdeskMVC\bin\log4net.xml

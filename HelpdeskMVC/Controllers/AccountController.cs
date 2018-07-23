@@ -36,11 +36,12 @@ namespace HelpdeskMVC.Controllers
         [ActionName("NewUserRegistration")]
         public ActionResult NewUserRegistration(UserDetails user)
         {
+            log.Debug("### Inside NewUserRegistration ");
             if (ModelState.IsValid)
             {
                 log.Info(">>>> Registration Method Called with--" + user.EmailId);
                 UpdateModel(user);
-                uComp.hashPassword(user);
+                uComp.saveUserDetails(user);
             }
             return RedirectToAction("Login");
         }

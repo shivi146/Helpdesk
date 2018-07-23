@@ -8,6 +8,7 @@ using HelpdeskMVC.Repository;
 using System.Data.Entity.Validation;
 using HelpdeskMVC.Controllers;
 using log4net;
+using MVCApplWithSql.Common;
 
 namespace HelpdeskMVC.Component
 {
@@ -17,13 +18,15 @@ namespace HelpdeskMVC.Component
         ILog log = log4net.LogManager.GetLogger(typeof(HomeController));
         UserRepository uRepo = new UserRepository();
         ApplContext dbContext = new ApplContext();
-        public bool hashPassword(UserDetails user)
+        public bool saveUserDetails(UserDetails user)
         {
+            log.Debug("### Inside saveUserDetails UserComponent");
             try
             {
                 user.Password = PasswordStorage.CreateHash(user.Password);
                 log.Info(">>>> Password Hashed");
                 uRepo.SaveUserDetails(user);
+                log.Debug("### Exiting saveUserDetails UserComponent");
                 return true;
             }
             catch (DbEntityValidationException e)
@@ -34,10 +37,10 @@ namespace HelpdeskMVC.Component
                     //    eve.Entry.Entity.GetType().Name, eve.Entry.State);
                     foreach (var ve in eve.ValidationErrors)
                     {
-                        log.Error("Error Occured while saving user details"+ ve.ErrorMessage);
+                        log.Error("Error Occured while saving user details" + ve.ErrorMessage);
                     }
                 }
-                throw;
+                throw new HelpdeskException("DB error occurred !!");
             }
         }
     }

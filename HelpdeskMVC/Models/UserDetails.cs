@@ -24,7 +24,6 @@ namespace HelpdeskMVC.Models
         public string LastName { get; set; }
 
         [Display(Name = "Select District")]
-
         public Nullable<int> DistrictId { get; set; }
         [NotMapped]
         public List<District> DistrictCollection { get; set; }
@@ -32,19 +31,19 @@ namespace HelpdeskMVC.Models
         [RegularExpression(@"^(\d{10})$", ErrorMessage = "Please Enter valid mobile number")]
         public string Mobile { get; set; }
 
+        [Display(Name = "Email Id")]
         [Required]
         [DataType(DataType.EmailAddress)]
-        [Remote("IsEmailIdAvailable", "User", ErrorMessage = "This EmailId already exists.")]
+        [Remote("IsEmailIdAvailable", "Account", ErrorMessage = "This EmailId already exists.")]
         public string EmailId { get; set; }
 
         [DataType(DataType.Password)]
         [Required]
         public string Password { get; set; }
 
+        [Display(Name = "Confirm Password")]
         [DataType(DataType.Password)]
         [System.ComponentModel.DataAnnotations.Compare("Password")]
-        [Display(Name = "Confirm Password")]
-
         [NotMapped]
         public string ConfirmPassword { get; set; }
 

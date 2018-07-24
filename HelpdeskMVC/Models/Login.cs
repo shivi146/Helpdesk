@@ -5,7 +5,7 @@ using System.Web;
 
 namespace HelpdeskMVC.Models
 {
-    public class Login
+    public class LoginModel
     {        
         public string EmailId { get; set; }
         public string Password { get; set; }

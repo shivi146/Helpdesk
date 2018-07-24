@@ -80,10 +80,11 @@ namespace HelpdeskMVC.Controllers
         {
             return Json(!dbContext.Users.Any(x => x.EmailId == EmailId), JsonRequestBehavior.AllowGet);
         }
+
         [HttpGet]
         public ActionResult Login()
         {
-            return View();
+            return View(new LoginModel());
         }
     }
 }

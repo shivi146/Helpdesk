@@ -11,6 +11,7 @@ using HelpdeskMVC.Component;
 using log4net;
 using System.Web.Security;
 using System.Security.Claims;
+using System.Data.Entity;
 
 namespace HelpdeskMVC.Controllers
 {
@@ -18,8 +19,16 @@ namespace HelpdeskMVC.Controllers
     public class AccountController : Controller
     {
         ILog log = log4net.LogManager.GetLogger(typeof(HomeController));
-        ApplContext dbContext = new ApplContext();
-        UserComponent uComp = new UserComponent();
+        
+        readonly IApplContext dbContext;
+        readonly IUserComponent userComponent;
+        public AccountController(IUserComponent usrComponent, IApplContext context)
+        {
+            this.userComponent = usrComponent;
+            this.dbContext = context;
+             
+        }
+        
         // GET: User
         public ActionResult Index()
         {
@@ -43,7 +52,7 @@ namespace HelpdeskMVC.Controllers
             {
                 log.Info(">>>> Registration Method Called with--" + user.EmailId);
                 UpdateModel(user);
-                uComp.saveUserDetails(user);
+                userComponent.saveUserDetails(user);
             }
             return RedirectToAction("Login");
         }
@@ -97,7 +106,7 @@ namespace HelpdeskMVC.Controllers
             {
                 return View(login);
             }
-            UserDetails userDetail = uComp.loginUser(login);
+            UserDetails userDetail = userComponent.loginUser(login);
             if (userDetail == null)
             {
                 ModelState.AddModelError("EmailId", "Email ID/Password Incorrect!!");

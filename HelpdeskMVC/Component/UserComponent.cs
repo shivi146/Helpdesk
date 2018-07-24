@@ -13,10 +13,17 @@ using MVCApplWithSql.Common;
 namespace HelpdeskMVC.Component
 {
 
-    public class UserComponent
+    public class UserComponent:IUserComponent
     {
+        readonly IUserRepository userRepository;
+        public UserComponent(IUserRepository repository)
+        {
+            this.userRepository = repository;
+        }
+
         ILog log = log4net.LogManager.GetLogger(typeof(HomeController));
-        UserRepository uRepo = new UserRepository();
+        
+       // IUserRepository uRepo = new UserRepository();
         ApplContext dbContext = new ApplContext();
         public bool saveUserDetails(UserDetails user)
         {
@@ -25,7 +32,7 @@ namespace HelpdeskMVC.Component
             {
                 user.Password = PasswordStorage.CreateHash(user.Password);
                 log.Info(">>>> Password Hashed");
-                uRepo.SaveUserDetails(user);
+                userRepository.SaveUserDetails(user);
                 log.Debug("### Exiting saveUserDetails UserComponent");
                 return true;
             }
@@ -54,7 +61,7 @@ namespace HelpdeskMVC.Component
         {           
             try
             {
-                UserDetails userDetail =  uRepo.checkUserLogin(login);                 
+                UserDetails userDetail = userRepository.checkUserLogin(login);                 
                 if(PasswordStorage.VerifyPassword(login.Password, userDetail.Password))
                 {
                     return userDetail;

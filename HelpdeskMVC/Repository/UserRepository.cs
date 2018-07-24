@@ -14,7 +14,7 @@ using System.Web;
 /// </summary>
 namespace HelpdeskMVC.Repository
 {
-    public class UserRepository
+    public class UserRepository :IUserRepository
     {
         ILog log = log4net.LogManager.GetLogger(typeof(HomeController));
         ApplContext dbContext = new ApplContext();

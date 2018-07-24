@@ -17,6 +17,7 @@ namespace HelpdeskMVC
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            HelpdeskMVC.App_Start.IOCConfig.RegisterComponents();
         }
     }
 }

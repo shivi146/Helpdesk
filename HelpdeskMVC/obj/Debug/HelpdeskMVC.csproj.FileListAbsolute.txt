@@ -46,3 +46,7 @@ D:\shivigarg\HelpdeskMVC\HelpdeskMVC\bin\EntityFramework.SqlServer.xml
 D:\shivigarg\HelpdeskMVC\HelpdeskMVC\obj\Debug\HelpdeskMVC.csprojResolveAssemblyReference.cache
 D:\shivigarg\HelpdeskMVC\HelpdeskMVC\bin\log4net.dll
 D:\shivigarg\HelpdeskMVC\HelpdeskMVC\bin\log4net.xml
+D:\shivigarg\HelpdeskMVC\HelpdeskMVC\bin\Unity.Abstractions.dll
+D:\shivigarg\HelpdeskMVC\HelpdeskMVC\bin\Unity.Container.dll
+D:\shivigarg\HelpdeskMVC\HelpdeskMVC\bin\Unity.Mvc.dll
+D:\shivigarg\HelpdeskMVC\HelpdeskMVC\bin\WebActivatorEx.dll

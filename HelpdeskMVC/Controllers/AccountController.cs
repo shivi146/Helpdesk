@@ -9,6 +9,8 @@ using HelpdeskMVC.Models;
 using PasswordSecurity;
 using HelpdeskMVC.Component;
 using log4net;
+using System.Web.Security;
+using System.Security.Claims;
 
 namespace HelpdeskMVC.Controllers
 {
@@ -84,7 +86,27 @@ namespace HelpdeskMVC.Controllers
         [HttpGet]
         public ActionResult Login()
         {
-            return View(new LoginModel());
+            log.Debug("### Login Page Loaded");
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Login(LoginModel login)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(login);
+            }
+            UserDetails userDetail = uComp.loginUser(login);
+            if (userDetail == null)
+            {
+                ModelState.AddModelError("EmailId", "Email ID/Password Incorrect!!");
+            }
+            else
+            {                
+                return RedirectToAction("UserProfile", "Home");
+            }
+            return View(login);
         }
     }
 }

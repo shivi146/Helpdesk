@@ -24,7 +24,7 @@ namespace HelpdeskMVC.Models
         public string LastName { get; set; }
 
         [Display(Name = "Select District")]
-        public Nullable<int> DistrictId { get; set; }
+        public int DistrictId { get; set; }
         [NotMapped]
         public List<District> DistrictCollection { get; set; }
 

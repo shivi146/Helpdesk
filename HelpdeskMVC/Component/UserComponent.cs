@@ -43,5 +43,32 @@ namespace HelpdeskMVC.Component
                 throw new HelpdeskException("DB error occurred !!");
             }
         }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
+        
+        public UserDetails loginUser(LoginModel login)
+        {           
+            try
+            {
+                UserDetails userDetail =  uRepo.checkUserLogin(login);                 
+                if(PasswordStorage.VerifyPassword(login.Password, userDetail.Password))
+                {
+                    return userDetail;
+                }
+                else
+                {
+                    return null;
+                }               
+            }
+            catch (Exception ex)
+            {
+                throw new HelpdeskException("some error occurred !");
+            }            
+        }
+
     }
 }

@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "UserProfile";
+    Layout = "~/Views/Shared/_MainLayoutPage.cshtml";
+}
+
+<h2>UserProfile</h2>
+<div>
+    Welcome
+    <b>@HttpContext.Current.LoginModel.Identity.Email
+        <br />
+
+</div>
+

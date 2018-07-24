@@ -1,17 +1,41 @@
-﻿
+﻿@model HelpdeskMVC.Models.LoginModel
 @{
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h2>Login Page</h2>
 
-@Html.ValidationSummary(true)
 @using (Html.BeginForm())
 {
-    @Html.EditorForModel()
+    @Html.AntiForgeryToken()
+    <div class="container body-content">
+        <div class="form-horizontal">
 
-    <p>
-        <button type="submit" class="btn btn-default">Login &raquo;</button>
-    </p>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })    <div class="form-group">
+                @Html.LabelFor(model => model.EmailId, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.EmailId, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EmailId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Login" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
 }
+
 
 

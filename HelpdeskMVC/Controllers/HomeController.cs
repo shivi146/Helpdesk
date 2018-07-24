@@ -12,6 +12,11 @@ namespace HelpdeskMVC.Controllers
         {
             return View();
         }
+       
+        public ActionResult UserProfile()
+        {
+            return View();
+        }
 
         public ActionResult About()
         {

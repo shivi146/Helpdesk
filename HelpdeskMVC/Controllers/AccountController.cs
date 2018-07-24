@@ -101,9 +101,11 @@ namespace HelpdeskMVC.Controllers
             if (userDetail == null)
             {
                 ModelState.AddModelError("EmailId", "Email ID/Password Incorrect!!");
+                
             }
             else
-            {                
+            {
+                Session["userName"] = userDetail.FirstName;
                 return RedirectToAction("UserProfile", "Home");
             }
             return View(login);

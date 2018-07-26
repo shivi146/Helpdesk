@@ -21,6 +21,12 @@ namespace HelpdeskMVC.Controllers
             this.Dbcontext = context;
             this.userComplaintComponent = usrComplaintComponent;
         }
+
+        //public ActionResult CustomError()
+        //{
+        //    ViewBag.Message = TempData["ApplicationError"];
+        //    return View();
+        //}
         public ActionResult Index()
         {
             return View();

@@ -168,7 +168,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
-    <Compile Include="Common\GlobalException.cs" />
     <Compile Include="Common\HelpdeskException.cs" />
     <Compile Include="Component\UserComplaintComponent.cs" />
     <Compile Include="Component\UserComponent.cs" />
@@ -177,6 +176,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="CustomExceptionHandler.cs" />
     <Compile Include="Helper\PasswordStorage.cs" />
     <Compile Include="Models\ApplContext.cs" />
     <Compile Include="Models\Account\District.cs" />
@@ -312,6 +312,7 @@
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shared\_MainLayoutPage.cshtml" />
     <Content Include="Views\Home\UserComplaint.cshtml" />
+    <Content Include="Views\Home\CError.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

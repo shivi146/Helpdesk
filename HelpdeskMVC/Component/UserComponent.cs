@@ -10,8 +10,9 @@ using HelpdeskMVC.Controllers;
 using log4net;
 using MVCApplWithSql.Common;
 
+
 namespace HelpdeskMVC.Component
-{
+{   
     public class UserComponent
     {
         readonly UserRepository userRepository;
@@ -79,7 +80,7 @@ namespace HelpdeskMVC.Component
             catch (Exception ex)
             {
                 log.Error(">>> Some error occurred while logging user" + ex.Message);
-                throw new HelpdeskException("some error occurred !");
+                throw new Exception("some error occurred !");
             }
         }
 

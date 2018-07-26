@@ -9,7 +9,7 @@ namespace HelpdeskMVC.Models.Home
     [Table("tblProjectApplications")]
     public class ProjectApplications
     {
-        public int Id { get; set; }
+        public int ApplicationId { get; set; }
         public string ApplicationName { get; set; }
     }
 

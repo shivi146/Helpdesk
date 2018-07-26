@@ -1,13 +1,31 @@
-﻿<!DOCTYPE html>
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Error</title>
+  
 </head>
 <body>
-    <hgroup>
-        <h1>Error.</h1>
-        <h2>An error occurred while processing your request.</h2>
-    </hgroup>
+
+    <h1>Error.</h1>
+    <h2>An error occurred while processing your request.</h2>
+    @if (@Model.Exception.Message != null)
+    {
+    <span>My custom error @Model.Exception.Message</span>
+        
+    }
+    else
+    {
+        <span>Oops some error occurred!!!!</span>
+    }
+
+
+
 </body>
 </html>

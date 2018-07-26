@@ -25,6 +25,7 @@ namespace HelpdeskMVC.Models
 
         [Display(Name = "Select District")]
         public int DistrictId { get; set; }
+
         [NotMapped]
         public List<District> DistrictCollection { get; set; }
 
@@ -49,5 +50,8 @@ namespace HelpdeskMVC.Models
 
         [Display(Name = "Date Of Birth")]
         public string DateOfBirth { get; set; }
+
+        [HiddenInput]
+        public string UserRole { get; set; }
     }
 }

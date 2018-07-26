@@ -10,7 +10,6 @@ namespace HelpdeskMVC.Models
     public class District
     {
         public int DistrictId { get; set; }
-        public string DistrictNames { get; set; }
-       
+        public string DistrictNames { get; set; }      
     }
 }

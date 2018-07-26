@@ -12,25 +12,28 @@ using MVCApplWithSql.Common;
 
 namespace HelpdeskMVC.Component
 {
-
-    public class UserComponent:IUserComponent
+    public class UserComponent
     {
-        readonly IUserRepository userRepository;
-        public UserComponent(IUserRepository repository)
+        readonly UserRepository userRepository;
+        public UserComponent(UserRepository repository)
         {
             this.userRepository = repository;
         }
-
         ILog log = log4net.LogManager.GetLogger(typeof(HomeController));
-        
-       // IUserRepository uRepo = new UserRepository();
-        ApplContext dbContext = new ApplContext();
-        public bool saveUserDetails(UserDetails user)
+
+        /// <summary>
+        /// password Hashing
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+
+        public bool SaveUserDetails(UserDetails user)
         {
             log.Debug("### Inside saveUserDetails UserComponent");
             try
             {
                 user.Password = PasswordStorage.CreateHash(user.Password);
+                user.UserRole = "U";
                 log.Info(">>>> Password Hashed");
                 userRepository.SaveUserDetails(user);
                 log.Debug("### Exiting saveUserDetails UserComponent");
@@ -50,31 +53,34 @@ namespace HelpdeskMVC.Component
                 throw new HelpdeskException("DB error occurred !!");
             }
         }
-        
+
         /// <summary>
-        /// 
+        /// Match passwords after hashing
         /// </summary>
         /// <param name="login"></param>
         /// <returns></returns>
-        
-        public UserDetails loginUser(LoginModel login)
-        {           
+
+        public UserDetails LoginUser(LoginModel login)
+        {
             try
             {
-                UserDetails userDetail = userRepository.checkUserLogin(login);                 
-                if(PasswordStorage.VerifyPassword(login.Password, userDetail.Password))
+                UserDetails userDetail = userRepository.CheckUserLogin(login);
+                if (PasswordStorage.VerifyPassword(login.Password, userDetail.Password))
                 {
+                    log.Info(">>>> Returning Userdetail After successful login for user" + userDetail.EmailId);
                     return userDetail;
                 }
                 else
                 {
+                    log.Info(">>>> Login unsuccessful");
                     return null;
-                }               
+                }
             }
             catch (Exception ex)
             {
+                log.Error(">>> Some error occurred while logging user" + ex.Message);
                 throw new HelpdeskException("some error occurred !");
-            }            
+            }
         }
 
     }

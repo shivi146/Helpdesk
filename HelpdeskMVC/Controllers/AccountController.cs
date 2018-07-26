@@ -18,17 +18,16 @@ namespace HelpdeskMVC.Controllers
 
     public class AccountController : Controller
     {
-        ILog log = log4net.LogManager.GetLogger(typeof(HomeController));
+        ILog log = log4net.LogManager.GetLogger(typeof(AccountController));
         
-        readonly IApplContext dbContext;
-        readonly IUserComponent userComponent;
-        public AccountController(IUserComponent usrComponent, IApplContext context)
+        readonly ApplContext dbContext;
+        readonly UserComponent userComponent;
+        public AccountController(UserComponent usrComponent, ApplContext context)
         {
             this.userComponent = usrComponent;
             this.dbContext = context;
-             
         }
-        
+        UserDetails userDetail = new UserDetails();
         // GET: User
         public ActionResult Index()
         {
@@ -38,9 +37,8 @@ namespace HelpdeskMVC.Controllers
         [HttpGet]
         public ActionResult NewUserRegistration()
         {
-            UserDetails u1 = new UserDetails();
-            u1.DistrictCollection = dbContext.Districts.ToList<District>();
-            return View(u1);
+            userDetail.DistrictCollection = dbContext.Districts.ToList<District>();
+            return View(userDetail);
         }
 
         [HttpPost]
@@ -52,7 +50,7 @@ namespace HelpdeskMVC.Controllers
             {
                 log.Info(">>>> Registration Method Called with--" + user.EmailId);
                 UpdateModel(user);
-                userComponent.saveUserDetails(user);
+                userComponent.SaveUserDetails(user);
             }
             return RedirectToAction("Login");
         }
@@ -86,7 +84,7 @@ namespace HelpdeskMVC.Controllers
         //    }
         //    return RedirectToAction("Login");
         //}
-
+        [HttpGet]
         public JsonResult IsEmailIdAvailable(string EmailId)
         {
             return Json(!dbContext.Users.Any(x => x.EmailId == EmailId), JsonRequestBehavior.AllowGet);
@@ -98,24 +96,30 @@ namespace HelpdeskMVC.Controllers
             log.Debug("### Login Page Loaded");
             return View();
         }
-
+        /// <summary>
+        /// User Login
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Login(LoginModel login)
         {
+            log.Info(">>>> Login method entered");
             if (!ModelState.IsValid)
             {
                 return View(login);
             }
-            UserDetails userDetail = userComponent.loginUser(login);
+            UserDetails userDetail = userComponent.LoginUser(login);
             if (userDetail == null)
             {
-                ModelState.AddModelError("EmailId", "Email ID/Password Incorrect!!");
-                
+                ModelState.AddModelError("EmailId", "Email ID/Password Incorrect!!");               
             }
             else
             {
                 Session["userName"] = userDetail.FirstName;
-                return RedirectToAction("UserProfile", "Home");
+                Session["Email"] = userDetail.EmailId;
+                Session["UserRole"] = userDetail.UserRole;
+                return RedirectToAction("Index", "Home");
             }
             return View(login);
         }

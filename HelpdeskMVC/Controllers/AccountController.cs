@@ -54,36 +54,7 @@ namespace HelpdeskMVC.Controllers
             }
             return RedirectToAction("Login");
         }
-        //public async Task<ActionResult> NewUserRegistration(UserDetails user)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            UpdateModel(user);
-        //            //user.Password = PasswordStorage.CreateHash(user.Password);                    
-        //            //dbContext.Users.Add(user);
-        //            uRepo.SaveUserDetails(user);
-        //            //await dbContext.SaveChangesAsync();                
-        //        }
-        //        catch (DbEntityValidationException e)
-        //        {
-        //            foreach (var eve in e.EntityValidationErrors)
-        //            {
-        //                Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-        //                    eve.Entry.Entity.GetType().Name, eve.Entry.State);
-        //                foreach (var ve in eve.ValidationErrors)
-        //                {
-        //                    Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-        //                        ve.PropertyName, ve.ErrorMessage);
-        //                }
-        //            }
-        //            throw;
-        //        }
-
-        //    }
-        //    return RedirectToAction("Login");
-        //}
+       
         [HttpGet]
         public JsonResult IsEmailIdAvailable(string EmailId)
         {

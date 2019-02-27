@@ -12,6 +12,7 @@ namespace HelpdeskMVC.Controllers
 {
     public class HomeController : Controller
     {
+		//Dev
         ILog log = log4net.LogManager.GetLogger(typeof(HomeController));
         UserComplaintModel userComplaint = new UserComplaintModel();
         readonly ApplContext Dbcontext;

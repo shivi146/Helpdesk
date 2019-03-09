@@ -50,13 +50,13 @@ namespace HelpdeskMVC.Controllers
         /// <returns></returns>
 
         [HttpPost]
-        public ActionResult UserComplaint(UserComplaintModel userComplaint)
+        public JsonResult UserComplaint(UserComplaintModel userComplaint)
         {
             if (ModelState.IsValid)
             {
                 userComplaintComponent.SaveUserComplaint(userComplaint);
             }
-            return View();
+            return Json("Complaint submitted !!! We will act on it asap!!", JsonRequestBehavior.AllowGet);
         }
 
         /// <summary>

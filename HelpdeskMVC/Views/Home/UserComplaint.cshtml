@@ -7,28 +7,47 @@
 
 <h2>UserComplaint</h2>
 @section scripts{
-    <script>
-        $(document).ready(function () {
+<script>
+    $(document).ready(function () {
 
-            $("#ApplicationId").change(function () {
+        $("#ApplicationId").change(function () {
+            $.ajax({
+                type: "GET",
+                url: "/Home/GetModuleList",
+                //contentType: "text/xml",
+                data: "ApplicationId=" + $("#ApplicationId").val(),
+                success: function (data, status, xhr) {
+                    $.each(data, function (index, row) {
+
+                        $("#ModuleId").append("<option value='" + row.Id + "'>" + row.ModuleName + "</options>");
+
+                    });
+                },
+                error: function (xhr, status, error) {
+                    alert("Error!");
+                }
+            });
+        });
+        $('#btnSubmit').click(function () {
+            alert("rishab");
+            var complaintOjbect = new Object();
+            complaintOjbect.ApplicationId = $('#ApplicationId').val();
+            complaintOjbect.ModuleId = $('#ModuleId').val();
+            complaintOjbect.ComplaintSubject = $('#ComplaintSubject').val();
+            complaintOjbect.ComplaintDescription = $('#ComplaintDescription').val();
+            $(document).ready(function () {
                 $.ajax({
-                    type: "GET",
-                    url: "/Home/GetModuleList",
-                    //contentType: "text/xml",
-                    data: "ApplicationId="+$("#ApplicationId").val(),
-                    success: function (data, status, xhr) {
-                        $.each(data, function (index, row) {
-                            
-                            $("#ModuleId").append("<option value='" + row.Id + "'>" + row.ModuleName + "</options>");
-
-                        });
-                    },
-                    error: function (xhr, status, error) {
-                        alert("Error!");
-                    }
+                    type: "POST",
+                    url: "/Issues/AddUserIssues",
+                    data: complaintOjbect
                 });
             });
         });
+    });
+
+
+  
+     
         
     </script>
 }
@@ -75,7 +94,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="submit" class="btn btn-default" />
+                <input type="submit" id="btnSubmit" value="submit" class="btn btn-default" />
             </div>
         </div>
     </div>

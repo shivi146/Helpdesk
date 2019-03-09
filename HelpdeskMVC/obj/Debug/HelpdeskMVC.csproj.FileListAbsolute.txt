@@ -101,3 +101,4 @@ D:\shivigarg\Helpdesk\HelpdeskMVC\bin\Microsoft.AI.Web.xml
 D:\shivigarg\Helpdesk\HelpdeskMVC\obj\Debug\HelpdeskMVC.csproj.CoreCompileInputs.cache
 D:\shivigarg\Helpdesk\HelpdeskMVC\obj\Debug\HelpdeskMVC.dll
 D:\shivigarg\Helpdesk\HelpdeskMVC\obj\Debug\HelpdeskMVC.pdb
+D:\shivigarg\Helpdesk\HelpdeskMVC\obj\Debug\HelpdeskMVC.csprojResolveAssemblyReference.cache

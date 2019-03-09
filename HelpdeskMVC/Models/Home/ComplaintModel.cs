@@ -8,9 +8,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace HelpdeskMVC.Models.Home
 {
     [Table("tblUserComplaint")]
-    public class UserComplaintModel
+    public class ComplaintModel
     {
-
         public int Id { get; set; }
 
         [Required]

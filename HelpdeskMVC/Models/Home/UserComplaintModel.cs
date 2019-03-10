@@ -34,5 +34,16 @@ namespace HelpdeskMVC.Models.Home
         [Required]
         [Display(Name ="Complaint Description")]
         public string ComplaintDescription { get; set; }
+
+        
+        public string ComplaintNo { get; set; }
+
+        
+        public int UserId { get; set; }
+
+        
+        public DateTime ComplaintDate { get; set; }
+
+        public String Status { get; set; }
     }
 }

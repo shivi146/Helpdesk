@@ -48,7 +48,15 @@ namespace HelpdeskMVC.Repository
             log.Info(">>> User Complaint save method entered");
             DbContext.UserComplaint.Add(userComplaint);
             DbContext.SaveChanges();
-            log.Info(">>>User Complaint details have been saved. ");
+            log.Debug(">>>User Complaint details have been saved. ");
+        }
+        
+        public UserDetails GetUserDetailsByEmail(String strEmail)
+        {            
+            log.Info(">>>Get User District by Email method entered");
+            UserDetails userDetails = DbContext.Users.Where(m => m.EmailId == strEmail).FirstOrDefault();        
+            log.Debug(">>>Get User District by Email exited. ");
+            return userDetails;
         }
     }
 }

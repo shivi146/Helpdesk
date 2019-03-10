@@ -1,4 +1,5 @@
 ﻿using HelpdeskMVC.Controllers;
+using HelpdeskMVC.Models;
 using HelpdeskMVC.Models.Home;
 using HelpdeskMVC.Repository;
 using log4net;
@@ -12,6 +13,10 @@ namespace HelpdeskMVC.Component
 {
     public class UserComplaintComponent
     {
+        /// <summary>
+        /// Generate a random number.
+        /// </summary>
+        Random rand = new Random();
         ILog log = log4net.LogManager.GetLogger(typeof(HomeController));
         readonly UserComplaintRepository userComplaintRepository;
         public UserComplaintComponent(UserComplaintRepository usrComplaintRepository)
@@ -43,6 +48,15 @@ namespace HelpdeskMVC.Component
         {
             try
             {
+                string Email = HttpContext.Current.Session["Email"].ToString();
+                UserDetails userdetails = userComplaintRepository.GetUserDetailsByEmail(Email);
+                //will generate a number 0 to 9999
+                int num = rand.Next(10000);
+                string complaintNo = userdetails.DistrictId + DateTime.Now.ToString("ddMMyyyy") + num;
+                userComplaint.ComplaintNo = complaintNo;
+                userComplaint.UserId = userdetails.Id;
+                userComplaint.ComplaintDate = DateTime.Now;
+                userComplaint.Status = "Open";
                 userComplaintRepository.SaveUserComplaint(userComplaint);
             }
             catch(Exception ex)

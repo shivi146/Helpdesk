@@ -173,6 +173,7 @@
     <Compile Include="Component\UserComponent.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -313,6 +314,7 @@
     <Content Include="Views\Shared\_MainLayoutPage.cshtml" />
     <Content Include="Views\Home\UserComplaint.cshtml" />
     <Content Include="Views\Home\CError.cshtml" />
+    <Content Include="Views\User\GetUserComplintDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

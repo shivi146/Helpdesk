@@ -51,12 +51,20 @@ namespace HelpdeskMVC.Repository
             log.Debug(">>>User Complaint details have been saved. ");
         }
         
-        public UserDetails GetUserDetailsByEmail(String strEmail)
+        public UserDetails GetUserDetailsByEmail(string strEmail)
         {            
             log.Info(">>>Get User District by Email method entered");
             UserDetails userDetails = DbContext.Users.Where(m => m.EmailId == strEmail).FirstOrDefault();        
             log.Debug(">>>Get User District by Email exited. ");
             return userDetails;
+        }
+
+        public List<UserComplaintModel> GetUserComplaintDetails(int userId,string status)
+        {
+            log.Info(">>>Get User District by Email method entered");
+            List<UserComplaintModel> lstUserComplaintDetails = DbContext.UserComplaint.Where(m => m.UserId == userId && m.Status==status).ToList();
+            log.Debug(">>>Get User District by Email exited. ");
+            return lstUserComplaintDetails;
         }
     }
 }

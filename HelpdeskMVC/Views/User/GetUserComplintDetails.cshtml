@@ -1,0 +1,90 @@
+﻿@model IEnumerable<HelpdeskMVC.Models.Home.UserComplaintModel>
+
+@{
+    ViewBag.Title = "GetUserComplintDetails";
+    Layout = "~/Views/Shared/_MainLayoutPage.cshtml";
+}
+
+<h2>GetUserComplintDetails</h2>
+
+@section scripts{ 
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "User/GetUserComplintDetails"
+
+            });
+        });
+
+    </script>
+    
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ApplicationId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModuleId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintSubject)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplaintDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ApplicationId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModuleId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComplaintSubject)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComplaintDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComplaintNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComplaintDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

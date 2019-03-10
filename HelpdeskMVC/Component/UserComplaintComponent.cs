@@ -65,5 +65,20 @@ namespace HelpdeskMVC.Component
                 throw new HelpdeskException("Some eror occured");
             }
         }
+
+        public List<UserComplaintModel> GetUserComplaintDetails(string emailId,string status)
+        {
+            try
+            {
+                UserDetails userdetails = userComplaintRepository.GetUserDetailsByEmail(emailId);
+                return userComplaintRepository.GetUserComplaintDetails(userdetails.Id, status);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
     }
 }

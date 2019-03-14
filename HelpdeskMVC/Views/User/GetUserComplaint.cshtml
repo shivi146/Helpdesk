@@ -1,0 +1,85 @@
+﻿
+@{
+    ViewBag.Title = "GetUserComplaint";
+    Layout = "~/Views/Shared/_MainLayoutPage.cshtml";
+}
+
+<h2>GetUserComplaint</h2>
+@section scripts{
+    @*<script>
+            $(document).ready(function () {
+                $('#btnGetData').click(function () {
+                    $.ajax({
+                        type: "GET",
+                        url: "/User/abc?emailid=86rishi@gmail.com&status=Open",
+                        success: function (data) {
+                            $('#blogTable tbody').empty();
+                            $.each(data, function (i, item) {
+                                var rows = "<tr>" + "<td>" + item.ComplaintNo + "</td>"  + "<td>" + item.ComplaintSubject + "</td>" + "<td>" + item.ComplaintDescription + "</td>" + "</tr>";
+                                 $('#blogTable tbody').append(rows);
+
+                            });
+                            $("#dvComplaint").append($('#blogTable thead'));
+                            $("#dvComplaint").append($('#blogTable tbody'));
+                            //$("#dvComplaint").refresh;
+                        },
+                        error: function (data) { }
+                    });
+                });
+            });
+        </script>*@
+
+    <script>
+       
+        $(document).ready(function () {
+            $('#btnGetData').click(function () {
+                var table = '<table> <thead>   <tr>   <th>Complaint Number</th>     <th>Subject</th> <th>Complaint Description</th> </tr>  </thead>';
+                table[0].border = "1";
+                                
+                $.ajax({
+                    type: "GET",
+                    url: "/User/abc?emailid=86rishi@gmail.com&status=Open",
+                    success: function (data) {
+                        $('#table tbody').empty();
+                        $.each(data, function (i, item) {
+                            table += '<tr><td>' + item.ComplaintNo + '</td><td>' + item.ComplaintSubject + '</td><td>' + item.ComplaintDescription + '</td></tr>';
+                        });
+                        table += '</table>';
+                        $("#dvComplaint").html(table);
+                       
+                    },
+                    error: function (data) { }
+                });
+            });
+        });
+    </script>
+}
+<style>
+    table, td, th {
+        border: 1px solid black;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th {
+        width: 70px;
+        height: 50px;
+    }
+</style>
+<input type="button" id="btnGetData" value="Submit" />
+<div id="dvComplaint">
+    @*<table id="blogTable" style="border:1px;display:none">
+            <thead>
+                <tr>
+                    <th>Complaint Number</th>
+                    <th>Subject</th>
+                    <th>Complaint Description</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>*@
+</div>
+

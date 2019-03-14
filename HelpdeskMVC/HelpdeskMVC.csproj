@@ -315,6 +315,7 @@
     <Content Include="Views\Home\UserComplaint.cshtml" />
     <Content Include="Views\Home\CError.cshtml" />
     <Content Include="Views\User\GetUserComplintDetails.cshtml" />
+    <Content Include="Views\User\GetUserComplaint.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

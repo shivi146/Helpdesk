@@ -21,11 +21,19 @@ namespace HelpdeskMVC.Controllers
             
             this.userComplaintComponent = usrComplaintComponent;
         }
+
         [HttpGet]
-        public JsonResult GetUserComplaintDetails( string  emailid,string status)
+        public ActionResult GetUserComplaint()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public JsonResult abc( string  emailid,string status)
         {
             //emailId = Request.QueryString[""]
-            
+            log.Info("Email ID received in GetUserComplaintDetails " + emailid);
+            log.Info("Status received in GetUserComplaintDetails" + status);
             return Json(userComplaintComponent.GetUserComplaintDetails(emailid, status), JsonRequestBehavior.AllowGet);
         }
     }

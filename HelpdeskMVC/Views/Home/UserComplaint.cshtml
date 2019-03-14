@@ -29,18 +29,18 @@
             });
         });
         $('#btnSubmit').click(function () {
-            alert("rishab");
+           
             var complaintOjbect = new Object();
             complaintOjbect.ApplicationId = $('#ApplicationId').val();
             complaintOjbect.ModuleId = $('#ModuleId').val();
             complaintOjbect.ComplaintSubject = $('#ComplaintSubject').val();
             complaintOjbect.ComplaintDescription = $('#ComplaintDescription').val();
-            $(document).ready(function () {
+            
                 $.ajax({
                     type: "POST",
                     url: "/Issues/AddUserIssues",
                     data: complaintOjbect
-                });
+               
             });
         });
     });

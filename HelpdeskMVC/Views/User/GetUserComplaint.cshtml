@@ -35,10 +35,11 @@
             $('#btnGetData').click(function () {
                 var table = '<table> <thead>   <tr>   <th>Complaint Number</th>     <th>Subject</th> <th>Complaint Description</th> </tr>  </thead>';
                 table[0].border = "1";
-                                
+                var EmailID = $('#userEmail').text();
+                alert(EmailID);
                 $.ajax({
                     type: "GET",
-                    url: "/User/abc?emailid=86rishi@gmail.com&status=Open",
+                    url: "/User/abc?emailid=" + EmailID+"&status=Open",                  
                     success: function (data) {
                         $('#table tbody').empty();
                         $.each(data, function (i, item) {

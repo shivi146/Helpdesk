@@ -169,7 +169,6 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Common\HelpdeskException.cs" />
-    <Compile Include="Component\UserComplaintComponent.cs" />
     <Compile Include="Component\UserComponent.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -186,7 +185,6 @@
     <Compile Include="Models\Home\ProjectApplications.cs" />
     <Compile Include="Models\Home\UserComplaintModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\UserComplaintRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Service\Helpdesk.cs" />
     <Compile Include="Service\IHelpdesk.cs" />

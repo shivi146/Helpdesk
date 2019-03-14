@@ -15,8 +15,8 @@ namespace HelpdeskMVC.Controllers
         ILog log = log4net.LogManager.GetLogger(typeof(HomeController));
         UserComplaintModel userComplaint = new UserComplaintModel();
        
-        readonly UserComplaintComponent userComplaintComponent;
-        public UserController( UserComplaintComponent usrComplaintComponent)
+        readonly UserComponent userComplaintComponent;
+        public UserController( UserComponent usrComplaintComponent)
         {
             
             this.userComplaintComponent = usrComplaintComponent;

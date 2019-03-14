@@ -16,9 +16,8 @@ namespace HelpdeskMVC.App_Start
     {
         public static void RegisterComponents()
         {
-            var container = new UnityContainer();
+            var container = new UnityContainer();          
             container.RegisterType<UserComponent, UserComponent>();
-            container.RegisterType<UserComplaintComponent, UserComplaintComponent>();
             container.RegisterType<UserRepository, UserRepository>();
             container.RegisterType<ApplContext, ApplContext>();
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));        }

@@ -39,8 +39,9 @@
                 $.ajax({
                     type: "POST",
                     url: "/Issues/AddUserIssues",
-                    data: complaintOjbect
-               
+                    data: complaintOjbect,
+                    contentType: 'application/json; charset=utf-8',
+                    
             });
         });
     });
@@ -53,12 +54,12 @@
 }
    
 
-@using (Html.BeginForm())
+@*@using (Html.BeginForm())
 {
-    @Html.AntiForgeryToken()
-
+    @Html.AntiForgeryToken()*@
+<body>
     <div class="form-horizontal">
-       
+
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -93,9 +94,11 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" id="btnSubmit" value="submit" class="btn btn-default" />
+                <input type="button" id="btnSubmit" value="submit" class="btn btn-default" />
             </div>
         </div>
     </div>
-}
+
+</body>
+
 

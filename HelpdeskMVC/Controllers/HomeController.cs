@@ -12,17 +12,17 @@ namespace HelpdeskMVC.Controllers
 {
     public class HomeController : Controller
     {
-		//Dev
         ILog log = log4net.LogManager.GetLogger(typeof(HomeController));
-        UserComplaintModel userComplaint = new UserComplaintModel();
         readonly ApplContext Dbcontext;
-        readonly UserComponent userComplaintComponent;
-        public HomeController(ApplContext context, UserComponent usrComplaintComponent)
+        readonly UserComponent usrComponent;
+        public HomeController(ApplContext context, UserComponent usrComponent)
         {
             this.Dbcontext = context;
-            this.userComplaintComponent = usrComplaintComponent;
+            this.usrComponent = usrComponent;
         }
-
+               
+        UserComplaintModel userComplaintModel = new UserComplaintModel();
+        
         //public ActionResult CustomError()
         //{
         //    ViewBag.Message = TempData["ApplicationError"];
@@ -40,8 +40,8 @@ namespace HelpdeskMVC.Controllers
         [HttpGet]
         public ActionResult UserComplaint()
         {
-            userComplaint.ApplicationName = userComplaintComponent.GetApplicationName();
-            return View(userComplaint);
+            userComplaintModel.ApplicationName = usrComponent.GetApplicationName();
+            return View(userComplaintModel);
         }
        
         /// <summary>
@@ -54,9 +54,9 @@ namespace HelpdeskMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                userComplaintComponent.SaveUserComplaint(userComplaint);
+                usrComponent.SaveUserComplaint(userComplaint);
             }
-            return Json("Complaint submitted !!! We will act on it asap!!", JsonRequestBehavior.AllowGet);
+            return Json("gfdgdg");
         }
 
         /// <summary>
@@ -69,8 +69,8 @@ namespace HelpdeskMVC.Controllers
         public JsonResult GetModuleList(int ApplicationId)
         {
             log.Info(">>> GetModules Entered");
-            userComplaint.ModuleNames = userComplaintComponent.GetModuleName(ApplicationId);
-            return Json(userComplaint.ModuleNames, JsonRequestBehavior.AllowGet);
+            userComplaintModel.ModuleNames = usrComponent.GetModuleName(ApplicationId);
+            return Json(userComplaintModel.ModuleNames, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -7,10 +7,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HelpdeskMVC.Models.Home
 {
-    [Table("tblUserComplaint")]
+    [Table("tblUserComplaints")]
     public class UserComplaintModel
     {
-
         public int Id { get; set; }
 
         [Required]
@@ -34,16 +33,15 @@ namespace HelpdeskMVC.Models.Home
         [Required]
         [Display(Name ="Complaint Description")]
         public string ComplaintDescription { get; set; }
-
         
         public string ComplaintNo { get; set; }
 
-        
-        public int UserId { get; set; }
-
-        
         public DateTime ComplaintDate { get; set; }
 
         public String Status { get; set; }
+
+        public int UserId { get; set; }
+       
+        public int DistrictId { get; set; }
     }
 }

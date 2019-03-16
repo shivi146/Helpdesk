@@ -1,0 +1,37 @@
+﻿@model HelpdeskMVC.Models.Home.UserComplaintModel
+
+@{
+    ViewBag.Title = "Complaints Details";
+    Layout = "~/Views/Shared/_MainLayoutPage.cshtml";
+}
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('#btnGetData').click(function () {
+                var table = '<table> <thead>   <tr>   <th>Complaint Number</th>     <th>Subject</th> <th>Complaint Description</th> </tr>  </thead>';
+                table[0].border = "1";
+                var EmailID = $('#userEmail').text();
+                alert(EmailID);
+                $.ajax({
+                    type: "GET",
+                    url: "/Admin/GetAllComplaintsByDistrict?emailid=" + EmailID + "&status=Open",
+                    success: function (data) {
+                        $('#table tbody').empty();
+                        $.each(data, function (i, item) {
+                            table += '<tr><td>' + item.ComplaintNo + '</td><td>' + item.ComplaintSubject + '</td><td>' + item.ComplaintDescription + '</td></tr>';
+                        });
+                        table += '</table>';
+                        $("#dvComplaint").html(table);
+
+                    },
+                    error: function (data) { }
+                });
+            });
+        });
+    </script>
+}
+
+<input type="button" id="btnGetData" value="Submit" />
+<div id="dvComplaint">
+    </div>

@@ -124,6 +124,7 @@ namespace HelpdeskMVC.Component
                 userComplaint.UserId = userdetails.Id;
                 userComplaint.ComplaintDate = DateTime.Now;
                 userComplaint.Status = "Open";
+                userComplaint.DistrictId = userdetails.DistrictId;
                 userComplaintRepository.SaveUserComplaint(userComplaint);
             }
             catch(Exception ex)

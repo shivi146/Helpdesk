@@ -28,12 +28,7 @@ namespace HelpdeskMVC.Controllers
             this.dbContext = context;
         }
         UserDetails userDetail = new UserDetails();
-        // GET: User
-        public ActionResult Index()
-        {
-            return View();
-        }
-
+       
         [HttpGet]
         public ActionResult NewUserRegistration()
         {

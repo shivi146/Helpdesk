@@ -1,0 +1,135 @@
+﻿@model HelpdeskMVC.Models.Home.UserComplaintModel
+
+@{
+    ViewBag.Title = "AddUserComplaint";
+    Layout = "~/Views/Shared/_MainLayoutPage.cshtml";
+}
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#dialog").dialog({
+                autoOpen: false,
+                modal: true,
+                title: "Details",
+                buttons: {
+                    Close: function () {
+                        $(this).dialog('close');
+                    }
+                }
+            });            
+            $("#ApplicationId").change(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "/Home/GetModuleList",
+                    //contentType: "text/xml",
+                    data: "ApplicationId=" + $("#ApplicationId").val(),
+                    success: function (data, status, xhr) {
+                        $.each(data, function (index, row) {
+
+                            $("#ModuleId").append("<option value='" + row.Id + "'>" + row.ModuleName + "</options>");
+
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        alert("Error!");
+                    }
+                });
+            });
+            $('#btnSubmit').click(function () {
+                var complaintOjbect = new Object();
+                complaintOjbect.ApplicationId = $('#ApplicationId').val();
+                complaintOjbect.ModuleId = $('#ModuleId').val();
+                complaintOjbect.ComplaintSubject = $('#ComplaintSubject').val();
+                complaintOjbect.ComplaintDescription = $('#ComplaintDescription').val();             
+                $.ajax({
+                    type: "POST",
+                    url: "/User/AddUserComplaint",
+                    data: complaintOjbect,
+                    success: function (response) {
+                        $('#myModalContent').html(response);                      
+                        $('#myModal').modal('show');  
+                    },
+                     Error: function () {
+                        alert("An error has occured!!!");
+                    }
+                });
+            });
+        });
+    </script>
+}
+<style>
+    .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    }
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+</style>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <div id='myModal' class='modal'>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div id='myModalContent'></div>
+                </div>
+            </div>
+
+        </div>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.ApplicationId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ApplicationId, new SelectList(Model.ApplicationName, "Id", "ApplicationName"), "--Select Application--", htmlAttributes: new { @class = "form-control AppId", id = "ApplicationId" })
+                @Html.ValidationMessageFor(model => model.ApplicationId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ModuleId, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ModuleId, new SelectList(""), "--Select Module--", htmlAttributes: new { @class = "form-control", id = "ModuleId" })
+                @Html.ValidationMessageFor(model => model.ApplicationId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.ComplaintSubject, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ComplaintSubject, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ComplaintSubject, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ComplaintDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ComplaintDescription, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ComplaintDescription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" id="btnSubmit" value="submit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+

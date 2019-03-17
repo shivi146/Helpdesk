@@ -22,8 +22,9 @@
                 <ul class="nav navbar-nav">
                     @if (Session["UserRole"].ToString() == "U")
                     {
-                        <li>@Html.ActionLink("Add Complaint", "UserComplaint")</li>
-                    }                   
+                        <li>@Html.ActionLink("View Complaint", "GetUserComplaint")</li>
+                        <li>@Html.ActionLink("Add Complaint", "AddUserComplaint")</li>
+                    }
                     @*<li>@Html.ActionLink("Home", "Index", "Home")</li>
                         <li>@Html.ActionLink("About", "About", "Home")</li>
                         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@

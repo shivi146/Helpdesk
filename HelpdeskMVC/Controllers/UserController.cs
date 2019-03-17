@@ -12,7 +12,7 @@ namespace HelpdeskMVC.Controllers
 {
     public class UserController : Controller
     {
-        ILog log = log4net.LogManager.GetLogger(typeof(HomeController));           
+        ILog log = log4net.LogManager.GetLogger(typeof(HelpdeskController));           
         readonly UserComponent userComplaintComponent;
         public UserController( UserComponent usrComplaintComponent)
         {            

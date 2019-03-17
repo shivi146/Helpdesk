@@ -11,7 +11,7 @@ namespace HelpdeskMVC.Repository
 {
     public class UserRepository
     {
-        ILog log = log4net.LogManager.GetLogger(typeof(HomeController));
+        ILog log = log4net.LogManager.GetLogger(typeof(HelpdeskController));
         readonly ApplContext dbContext;
         public UserRepository(ApplContext context)
         {

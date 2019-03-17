@@ -21,7 +21,7 @@
             $("#ApplicationId").change(function () {
                 $.ajax({
                     type: "GET",
-                    url: "/Home/GetModuleList",
+                    url: "/Helpdesk/GetModuleList",
                     //contentType: "text/xml",
                     data: "ApplicationId=" + $("#ApplicationId").val(),
                     success: function (data, status, xhr) {

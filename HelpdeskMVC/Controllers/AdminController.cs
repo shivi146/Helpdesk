@@ -11,7 +11,7 @@ namespace HelpdeskMVC.Controllers
 {
     public class AdminController : Controller
     {
-        ILog log = log4net.LogManager.GetLogger(typeof(HomeController));
+        ILog log = log4net.LogManager.GetLogger(typeof(HelpdeskController));
         readonly ApplContext Dbcontext;
         readonly UserComponent usrComponent;
         public AdminController(ApplContext context, UserComponent usrComponent)

@@ -85,7 +85,7 @@ namespace HelpdeskMVC.Controllers
                 Session["userName"] = userDetail.FirstName;
                 Session["Email"] = userDetail.EmailId;
                 Session["UserRole"] = userDetail.UserRole;
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("GetUserComplaint", "User");
             }
             return View(login);
         }

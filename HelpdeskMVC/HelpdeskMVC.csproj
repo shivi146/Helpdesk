@@ -172,7 +172,7 @@
     <Compile Include="Component\UserComponent.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\HelpdeskController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -296,9 +296,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\NewUserRegistration.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
@@ -311,8 +308,6 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shared\_MainLayoutPage.cshtml" />
-    <Content Include="Views\Home\UserComplaint.cshtml" />
-    <Content Include="Views\Home\CError.cshtml" />
     <Content Include="Views\User\GetUserComplintDetails.cshtml" />
     <Content Include="Views\User\GetUserComplaint.cshtml" />
     <Content Include="Views\Admin\GetAllComplaints.cshtml" />

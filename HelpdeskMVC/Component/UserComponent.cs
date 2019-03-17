@@ -19,7 +19,7 @@ namespace HelpdeskMVC.Component
         /// Generate a random number.
         /// </summary>
         Random rand = new Random();
-        ILog log = log4net.LogManager.GetLogger(typeof(HomeController));
+        ILog log = log4net.LogManager.GetLogger(typeof(HelpdeskController));
         readonly UserRepository userComplaintRepository;
 
 

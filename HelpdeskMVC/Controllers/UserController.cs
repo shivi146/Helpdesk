@@ -12,7 +12,7 @@ namespace HelpdeskMVC.Controllers
 {
     public class UserController : Controller
     {
-        ILog log = log4net.LogManager.GetLogger(typeof(HelpdeskController));           
+        ILog log = log4net.LogManager.GetLogger(typeof(UserController));           
         readonly UserComponent userComplaintComponent;
         readonly HelpdeskComponent helpdeskComponent;
 
@@ -35,13 +35,13 @@ namespace HelpdeskMVC.Controllers
         /// </summary>
         /// <returns></returns>
        [HttpPost]
-        public JsonResult AddUserComplaint(UserComplaintModel userComplaint)
+        public ActionResult AddUserComplaint(UserComplaintModel userComplaint)
         {
             if (ModelState.IsValid)
             {
                 userComplaintComponent.SaveUserComplaint(userComplaint);
             }
-            return Json("Complaint submitted successfully");
+           return RedirectToAction("GetUserComplaint");
         }
 
         [HttpGet]

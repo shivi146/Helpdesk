@@ -43,5 +43,6 @@ namespace HelpdeskMVC.Models.Home
         public int UserId { get; set; }
        
         public int DistrictId { get; set; }
+
     }
 }

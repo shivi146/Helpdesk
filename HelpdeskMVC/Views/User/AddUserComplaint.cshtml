@@ -36,25 +36,25 @@
                     }
                 });
             });
-            $('#btnSubmit').click(function () {
-                var complaintOjbect = new Object();
-                complaintOjbect.ApplicationId = $('#ApplicationId').val();
-                complaintOjbect.ModuleId = $('#ModuleId').val();
-                complaintOjbect.ComplaintSubject = $('#ComplaintSubject').val();
-                complaintOjbect.ComplaintDescription = $('#ComplaintDescription').val();             
-                $.ajax({
-                    type: "POST",
-                    url: "/User/AddUserComplaint",
-                    data: complaintOjbect,
-                    success: function (response) {
-                        $('#myModalContent').html(response);                      
-                        $('#myModal').modal('show');  
-                    },
-                     Error: function () {
-                        alert("An error has occured!!!");
-                    }
-                });
-            });
+            //$('#btnSubmit').click(function () {
+            //    var complaintOjbect = new Object();
+            //    complaintOjbect.ApplicationId = $('#ApplicationId').val();
+            //    complaintOjbect.ModuleId = $('#ModuleId').val();
+            //    complaintOjbect.ComplaintSubject = $('#ComplaintSubject').val();
+            //    complaintOjbect.ComplaintDescription = $('#ComplaintDescription').val();             
+            //    $.ajax({
+            //        type: "POST",
+            //        url: "/User/AddUserComplaint",
+            //        data: complaintOjbect,
+            //        success: function (response) {
+            //            $('#myModalContent').html(response);                      
+            //            $('#myModal').modal('show');  
+            //        },
+            //         Error: function () {
+            //            alert("An error has occured!!!");
+            //        }
+            //    });
+            //});
         });
     </script>
 }
@@ -127,7 +127,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="button" id="btnSubmit" value="submit" class="btn btn-default" />
+                <input type="submit" id="btnSubmit" value="submit" class="btn btn-default" />
             </div>
         </div>
     </div>

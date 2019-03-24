@@ -14,16 +14,19 @@ namespace HelpdeskMVC.Controllers
     {
         ILog log = log4net.LogManager.GetLogger(typeof(HelpdeskController));           
         readonly UserComponent userComplaintComponent;
-        public UserController( UserComponent usrComplaintComponent)
+        readonly HelpdeskComponent helpdeskComponent;
+
+        public UserController( UserComponent usrComplaintComponent, HelpdeskComponent helpdeskComponent)
         {            
             this.userComplaintComponent = usrComplaintComponent;
+            this.helpdeskComponent = helpdeskComponent;
         }
         UserComplaintModel userComplaintModel = new UserComplaintModel();
 
         [HttpGet]
         public ActionResult AddUserComplaint()
         {
-            userComplaintModel.ApplicationName = userComplaintComponent.GetApplicationName();
+            userComplaintModel.ApplicationName = helpdeskComponent.GetApplicationName();
             return View(userComplaintModel);
         }
 

@@ -2,10 +2,8 @@
 using HelpdeskMVC.Models;
 using HelpdeskMVC.Models.Home;
 using log4net;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 
 namespace HelpdeskMVC.Repository
 {
@@ -16,59 +14,6 @@ namespace HelpdeskMVC.Repository
         public UserRepository(ApplContext context)
         {
             this.dbContext = context;
-        }
-
-        /// <summary>
-        /// User Registration data Saved.
-        /// </summary>
-        /// <param name="user"></param>
-        /// <returns></returns>
-        public bool SaveUserDetails(UserDetails user)
-        {
-            log.Debug("### SaveUserDetails");
-            dbContext.Configuration.ValidateOnSaveEnabled = false;
-            dbContext.Users.Add(user);
-            dbContext.SaveChanges();
-            log.Info(">>>> Data has been saved");
-            return true;
-        }
-
-        /// <summary>
-        /// Get Details from db based on EmailId
-        /// </summary>
-        /// <param name="login"></param>
-        /// <returns></returns>
-        public UserDetails CheckUserLogin(LoginModel login)
-        {
-            log.Debug("### checkUserLogin");
-            dbContext.Configuration.ValidateOnSaveEnabled = false;
-            UserDetails userDetails = dbContext.Users.Where(x => x.EmailId == login.EmailId).FirstOrDefault();
-            return userDetails;
-        }
-        /// <summary>
-        /// Geting Applications from the database
-        /// </summary>
-        /// <returns></returns>
-        public List<ProjectApplications> GetApplicationName()
-        {
-            log.Info(">>> GetApplicationName Repository layer entered");
-            List<ProjectApplications> ApplicationNames =  dbContext.Applications.ToList<ProjectApplications>();
-            log.Debug("### get the list of applications from database");
-            return ApplicationNames;
-        }
-
-        /// <summary>
-        /// 
-        /// getting the modules names from the database.
-        /// </summary>
-        /// <param name="ApplicationId"></param>
-        /// <returns></returns>
-        public List<Modules> GetModuleName(int ApplicationId)
-        {
-            log.Info(">>> GetModuleName Repository layer entered");
-            List<Modules> ModuleNames = dbContext.ModuleName.Where(x=>x.ApplicationId==ApplicationId).ToList<Modules>();
-            log.Debug("### get the list of modules from database");
-            return ModuleNames;
         }
 
         public void SaveUserComplaint(UserComplaintModel userComplaint)

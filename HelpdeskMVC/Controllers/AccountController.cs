@@ -21,10 +21,10 @@ namespace HelpdeskMVC.Controllers
         ILog log = log4net.LogManager.GetLogger(typeof(AccountController));
         
         readonly ApplContext dbContext;
-        readonly UserComponent userComponent;
-        public AccountController(UserComponent usrComponent, ApplContext context)
+        readonly AccountComponent accountComponent;
+        public AccountController(AccountComponent AcctComponent, ApplContext context)
         {
-            this.userComponent = usrComponent;
+            this.accountComponent = AcctComponent;
             this.dbContext = context;
         }
         UserDetails userDetail = new UserDetails();
@@ -37,7 +37,7 @@ namespace HelpdeskMVC.Controllers
         }
 
         [HttpPost]
-        [ActionName("NewUserRegistration")]
+        
         public ActionResult NewUserRegistration(UserDetails user)
         {
             log.Debug("### Inside NewUserRegistration ");
@@ -45,7 +45,7 @@ namespace HelpdeskMVC.Controllers
             {
                 log.Info(">>>> Registration Method Called with--" + user.EmailId);
                 UpdateModel(user);
-                userComponent.SaveUserDetails(user);
+                accountComponent.SaveUserDetails(user);
             }
             return RedirectToAction("Login");
         }
@@ -75,7 +75,7 @@ namespace HelpdeskMVC.Controllers
             {
                 return View(login);
             }
-            UserDetails userDetail = userComponent.LoginUser(login);
+            UserDetails userDetail = accountComponent.LoginUser(login);
             if (userDetail == null)
             {
                 ModelState.AddModelError("EmailId", "Email ID/Password Incorrect!!");               

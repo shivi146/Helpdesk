@@ -27,90 +27,7 @@ namespace HelpdeskMVC.Component
         {
             this.userComplaintRepository = usrComplaintRepository;
         }
-
-        /// <summary>
-        /// password Hashing
-        /// </summary>
-        /// <param name="user"></param>
-        /// <returns></returns>
-
-        public bool SaveUserDetails(UserDetails user)
-        {
-            log.Debug("### Inside saveUserDetails UserComponent");
-            try
-            {
-                user.Password = PasswordStorage.CreateHash(user.Password);
-                user.UserRole = "U";
-                log.Info(">>>> Password Hashed");
-                userComplaintRepository.SaveUserDetails(user);
-                log.Debug("### Exiting saveUserDetails UserComponent");
-                return true;
-            }
-            catch (DbEntityValidationException e)
-            {
-                foreach (var eve in e.EntityValidationErrors)
-                {
-                    //Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                    //    eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        log.Error("Error Occured while saving user details" + ve.ErrorMessage);
-                    }
-                }
-                throw new HelpdeskException("DB error occurred !!");
-            }
-        }
-
-        /// <summary>
-        /// Match passwords after hashing
-        /// </summary>
-        /// <param name="login"></param>
-        /// <returns></returns>
-
-        public UserDetails LoginUser(LoginModel login)
-        {
-            try
-            {
-                UserDetails userDetail = userComplaintRepository.CheckUserLogin(login);
-                if (PasswordStorage.VerifyPassword(login.Password, userDetail.Password))
-                {
-                    log.Info(">>>> Returning Userdetail After successful login for user" + userDetail.EmailId);
-                    return userDetail;
-                }
-                else
-                {
-                    log.Info(">>>> Login unsuccessful");
-                    return null;
-                }
-            }
-            catch (Exception ex)
-            {
-                log.Error(">>> Some error occurred while logging user" + ex.Message);
-                throw new Exception("some error occurred !");
-            }
-        }
-
-        /// <summary>
-        /// Getting the Application list from repository layer
-        /// </summary>
-        /// <returns>List of modules</returns>
-        public List<ProjectApplications> GetApplicationName()
-        {
-           log.Debug("### GetApplicationName Entered");
-           return userComplaintRepository.GetApplicationName();          
-        }
-
-        /// <summary>
-        /// Getting the modules list from repository layer
-        /// </summary>
-        /// <param name="ApplicationId"></param>
-        /// <returns></returns>
-        public List<Modules> GetModuleName(int ApplicationId)
-        {
-            log.Debug("### GetModuleName Entered");
-            return userComplaintRepository.GetModuleName(ApplicationId);
-        }
-
+      
         public void SaveUserComplaint(UserComplaintModel userComplaint)
         {
             try
@@ -144,7 +61,6 @@ namespace HelpdeskMVC.Component
             }
             catch (Exception)
             {
-
                 throw;
             }
         }

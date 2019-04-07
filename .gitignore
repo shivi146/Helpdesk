@@ -1,2 +1,8 @@
 .vs/
 packages/
+HelpdeskMVC/obj/
+HelpdeskMVC/HelpdeskMVC.zip
+HelpdeskMVC/HelpdeskMVC.deploy.cmd
+HelpdeskMVC/HelpdeskMVC.deploy-readme.txt
+HelpdeskMVC/HelpdeskMVC.SourceManifest.xml
+HelpdeskMVC/HelpdeskMVC.SetParameters.xml
